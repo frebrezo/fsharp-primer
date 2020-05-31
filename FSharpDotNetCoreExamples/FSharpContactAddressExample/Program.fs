@@ -29,100 +29,100 @@ type ContactPreference =
     | Email
     | Fax
 
-let hasUsAddress (contactRecord : Contact) : bool =
-    (contactRecord.address.isoCountryCode |> String.IsNullOrEmpty)
-    || (contactRecord.address.isoCountryCode = "US")
+let hasUsAddress (contact' : Contact) : bool =
+    (contact'.address.isoCountryCode |> String.IsNullOrEmpty)
+    || (contact'.address.isoCountryCode = "US")
 
-let usStateAbbreviation (contactRecord : Contact) : string =
-    if contactRecord.address.isoCountrySubdivisionL1Code |> String.IsNullOrEmpty then
-        contactRecord.address.isoCountrySubdivisionL1Code
+let usStateAbbreviation (contact' : Contact) : string =
+    if contact'.address.isoCountrySubdivisionL1Code |> String.IsNullOrEmpty then
+        contact'.address.isoCountrySubdivisionL1Code
     else
-        contactRecord.address.isoCountrySubdivisionL1Code
-            .Replace(contactRecord.address.isoCountryCode, String.Empty)
+        contact'.address.isoCountrySubdivisionL1Code
+            .Replace(contact'.address.isoCountryCode, String.Empty)
             .Replace("-", String.Empty)
 
-let usMailingAddressLine2 (contactRecord : Contact) : string =
+let usMailingAddressLine2 (contact' : Contact) : string =
     let mutable sb = new StringBuilder()
 
-    if not (contactRecord.address.city |> String.IsNullOrEmpty) then
-        sb <- sb.Append contactRecord.address.city
+    if not (contact'.address.city |> String.IsNullOrEmpty) then
+        sb <- sb.Append contact'.address.city
     if sb.Length > 0 then sb <- sb.Append " "
-    if not (contactRecord.address.isoCountrySubdivisionL1Code |> String.IsNullOrEmpty) then
-        sb <- sb.Append (contactRecord |> usStateAbbreviation)
+    if not (contact'.address.isoCountrySubdivisionL1Code |> String.IsNullOrEmpty) then
+        sb <- sb.Append (contact' |> usStateAbbreviation)
     if sb.Length > 0 then sb <- sb.Append " "
-    if not (contactRecord.address.postalCode |> String.IsNullOrEmpty) then
-        sb <- sb.Append contactRecord.address.postalCode
+    if not (contact'.address.postalCode |> String.IsNullOrEmpty) then
+        sb <- sb.Append contact'.address.postalCode
 
     sb.ToString()
 
-let usMailingAddress (contactRecord : Contact) : string =
+let usMailingAddress (contact' : Contact) : string =
     let mutable sb = new StringBuilder()
 
-    if not (contactRecord.address.streetAddress |> String.IsNullOrEmpty) then
-        sb <- sb.Append contactRecord.address.streetAddress
+    if not (contact'.address.streetAddress |> String.IsNullOrEmpty) then
+        sb <- sb.Append contact'.address.streetAddress
     if sb.Length > 0 then sb <- sb.Append ", "
-    let address2 = contactRecord |> usMailingAddressLine2
+    let address2 = contact' |> usMailingAddressLine2
     if not (address2 |> String.IsNullOrEmpty) then
         sb <- sb.Append address2
 
     sb.ToString()
 
-let globalMailingAddressLine2 (contactRecord : Contact) : string =
+let globalMailingAddressLine2 (contact' : Contact) : string =
     let mutable sb = new StringBuilder()
 
-    if not (contactRecord.address.postalCode |> String.IsNullOrEmpty) then
-        sb <- sb.Append contactRecord.address.postalCode
+    if not (contact'.address.postalCode |> String.IsNullOrEmpty) then
+        sb <- sb.Append contact'.address.postalCode
     if sb.Length > 0 then sb <- sb.Append " "
-    if not (contactRecord.address.city |> String.IsNullOrEmpty) then
-        sb <- sb.Append contactRecord.address.city
+    if not (contact'.address.city |> String.IsNullOrEmpty) then
+        sb <- sb.Append contact'.address.city
     if sb.Length > 0 then sb <- sb.Append " "
-    if not (contactRecord.address.isoCountrySubdivisionL1Code |> String.IsNullOrEmpty) then
-        sb <- sb.Append contactRecord.address.isoCountrySubdivisionL1Code
+    if not (contact'.address.isoCountrySubdivisionL1Code |> String.IsNullOrEmpty) then
+        sb <- sb.Append contact'.address.isoCountrySubdivisionL1Code
 
     sb.ToString()
 
-let globalMailingAddress (contactRecord : Contact) : string =
+let globalMailingAddress (contact' : Contact) : string =
     let mutable sb = new StringBuilder()
 
-    if not (contactRecord.address.streetAddress |> String.IsNullOrEmpty) then
-        sb <- sb.Append contactRecord.address.streetAddress
+    if not (contact'.address.streetAddress |> String.IsNullOrEmpty) then
+        sb <- sb.Append contact'.address.streetAddress
     if sb.Length > 0 then sb <- sb.Append ", "
-    let address2 = contactRecord |> globalMailingAddressLine2
+    let address2 = contact' |> globalMailingAddressLine2
     if not (address2 |> String.IsNullOrEmpty) then
         sb <- sb.Append address2
 
     sb.ToString()
 
-let mailingAddress (contactRecord : Contact) : string =
-    contactRecord
-    |> if contactRecord |> hasUsAddress then usMailingAddress
+let mailingAddress (contact' : Contact) : string =
+    contact'
+    |> if contact' |> hasUsAddress then usMailingAddress
         else globalMailingAddress
 
-let phoneNumber (contactRecord : Contact) : string =
-    if not (contactRecord.mobilePhoneNumber |> String.IsNullOrEmpty) then
-        contactRecord.mobilePhoneNumber
+let phoneNumber (contact' : Contact) : string =
+    if not (contact'.mobilePhoneNumber |> String.IsNullOrEmpty) then
+        contact'.mobilePhoneNumber
     else
-        contactRecord.phoneNumber
+        contact'.phoneNumber
 
-let contact (contactRecord : Contact) (contactPreference : ContactPreference) : string =
+let contact (contact' : Contact) (contactPreference : ContactPreference) : string =
     match contactPreference with
-    | Mail -> contactRecord |> mailingAddress
-    | Call -> contactRecord |> phoneNumber
-    | Email -> contactRecord.emailAddress
-    | Fax -> contactRecord.faxNumber
+    | Mail -> contact' |> mailingAddress
+    | Call -> contact' |> phoneNumber
+    | Email -> contact'.emailAddress
+    | Fax -> contact'.faxNumber
 
-let display (contactRecord : Contact) =
-    //let contactInfo = (contactRecord, Mail) ||> contact
-    let contactInfo = contact contactRecord Mail
+let display (contact' : Contact) =
+    //let contactInfo = (contact', Mail) ||> contact
+    let contactInfo = contact contact' Mail
     printfn "%s" contactInfo
 
-    let contactInfo = contact contactRecord Call
+    let contactInfo = contact contact' Call
     printfn "%s" contactInfo
 
-    let contactInfo = contact contactRecord Email
+    let contactInfo = contact contact' Email
     printfn "%s" contactInfo
 
-    let contactInfo = contact contactRecord Fax
+    let contactInfo = contact contact' Fax
     printfn "%s" contactInfo
 
 
@@ -130,7 +130,7 @@ let display (contactRecord : Contact) =
 let main argv =
     printfn "Hello World from F#!"
 
-    let usContactRecord : Contact = {
+    let usContact : Contact = {
         firstName = "Steve";
         lastName = "Rogers";
         phoneNumber = "619-867-5309";
@@ -146,9 +146,9 @@ let main argv =
         }
     }
 
-    display usContactRecord
+    display usContact
 
-    let globalContactRecord : Contact = {
+    let globalContact : Contact = {
         firstName = "Brian";
         lastName = "Braddock";
         phoneNumber = "01621-562593";
@@ -164,6 +164,6 @@ let main argv =
         }
     }
 
-    display globalContactRecord
+    display globalContact
 
     0 // return an integer exit code
