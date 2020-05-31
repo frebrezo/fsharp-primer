@@ -5,7 +5,7 @@
 open System
 open System.Text
 
-type AddressRecord = {
+type Address = {
     streetAddress : string;
     city : string;
     postalCode : string;
@@ -13,14 +13,14 @@ type AddressRecord = {
     isoCountryCode : string;
 }
 
-type ContactRecord = {
+type Contact = {
     firstName : string;
     lastName : string;
     phoneNumber : string;
     mobilePhoneNumber : string;
     faxNumber : string;
     emailAddress : string;
-    address : AddressRecord;
+    address : Address;
 }
 
 type ContactPreference =
@@ -29,11 +29,11 @@ type ContactPreference =
     | Email
     | Fax
 
-let hasUsAddress (contactRecord : ContactRecord) : bool =
+let hasUsAddress (contactRecord : Contact) : bool =
     (contactRecord.address.isoCountryCode |> String.IsNullOrEmpty)
     || (contactRecord.address.isoCountryCode = "US")
 
-let usStateAbbreviation (contactRecord : ContactRecord) : string =
+let usStateAbbreviation (contactRecord : Contact) : string =
     if contactRecord.address.isoCountrySubdivisionL1Code |> String.IsNullOrEmpty then
         contactRecord.address.isoCountrySubdivisionL1Code
     else
@@ -41,7 +41,7 @@ let usStateAbbreviation (contactRecord : ContactRecord) : string =
             .Replace(contactRecord.address.isoCountryCode, String.Empty)
             .Replace("-", String.Empty)
 
-let usMailingAddressLine2 (contactRecord : ContactRecord) : string =
+let usMailingAddressLine2 (contactRecord : Contact) : string =
     let mutable sb = new StringBuilder()
 
     if not (contactRecord.address.city |> String.IsNullOrEmpty) then
@@ -55,7 +55,7 @@ let usMailingAddressLine2 (contactRecord : ContactRecord) : string =
 
     sb.ToString()
 
-let usMailingAddress (contactRecord : ContactRecord) : string =
+let usMailingAddress (contactRecord : Contact) : string =
     let mutable sb = new StringBuilder()
 
     if not (contactRecord.address.streetAddress |> String.IsNullOrEmpty) then
@@ -67,7 +67,7 @@ let usMailingAddress (contactRecord : ContactRecord) : string =
 
     sb.ToString()
 
-let globalMailingAddressLine2 (contactRecord : ContactRecord) : string =
+let globalMailingAddressLine2 (contactRecord : Contact) : string =
     let mutable sb = new StringBuilder()
 
     if not (contactRecord.address.postalCode |> String.IsNullOrEmpty) then
@@ -81,7 +81,7 @@ let globalMailingAddressLine2 (contactRecord : ContactRecord) : string =
 
     sb.ToString()
 
-let globalMailingAddress (contactRecord : ContactRecord) : string =
+let globalMailingAddress (contactRecord : Contact) : string =
     let mutable sb = new StringBuilder()
 
     if not (contactRecord.address.streetAddress |> String.IsNullOrEmpty) then
@@ -93,25 +93,25 @@ let globalMailingAddress (contactRecord : ContactRecord) : string =
 
     sb.ToString()
 
-let mailingAddress (contactRecord : ContactRecord) : string =
+let mailingAddress (contactRecord : Contact) : string =
     contactRecord
     |> if contactRecord |> hasUsAddress then usMailingAddress
         else globalMailingAddress
 
-let phoneNumber (contactRecord : ContactRecord) : string =
+let phoneNumber (contactRecord : Contact) : string =
     if not (contactRecord.mobilePhoneNumber |> String.IsNullOrEmpty) then
         contactRecord.mobilePhoneNumber
     else
         contactRecord.phoneNumber
 
-let contact (contactRecord : ContactRecord) (contactPreference : ContactPreference) : string =
+let contact (contactRecord : Contact) (contactPreference : ContactPreference) : string =
     match contactPreference with
     | Mail -> contactRecord |> mailingAddress
     | Call -> contactRecord |> phoneNumber
     | Email -> contactRecord.emailAddress
     | Fax -> contactRecord.faxNumber
 
-let display (contactRecord : ContactRecord) =
+let display (contactRecord : Contact) =
     //let contactInfo = (contactRecord, Mail) ||> contact
     let contactInfo = contact contactRecord Mail
     printfn "%s" contactInfo
@@ -130,7 +130,7 @@ let display (contactRecord : ContactRecord) =
 let main argv =
     printfn "Hello World from F#!"
 
-    let usContactRecord : ContactRecord = {
+    let usContactRecord : Contact = {
         firstName = "Steve";
         lastName = "Rogers";
         phoneNumber = "619-867-5309";
@@ -148,7 +148,7 @@ let main argv =
 
     display usContactRecord
 
-    let globalContactRecord : ContactRecord = {
+    let globalContactRecord : Contact = {
         firstName = "Brian";
         lastName = "Braddock";
         phoneNumber = "01621-562593";
