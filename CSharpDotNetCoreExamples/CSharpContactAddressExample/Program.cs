@@ -90,19 +90,15 @@ namespace CSharpContactAddressExample
         public string EmailAddress { get; set; }
         public Address Address { get; set; }
 
-        public string GetMailingAddress()
-        {
-            if (Address?.HasUsAddress ?? false)
-                return Address?.GetUsMailingAddress();
-            return Address?.GetGlobalMailingAddress();
-        }
+        public string GetMailingAddress() =>
+            Address?.HasUsAddress ?? false
+                ? Address?.GetUsMailingAddress()
+                : Address?.GetGlobalMailingAddress();
 
-        public string GetPhoneNumber()
-        {
-            if (!string.IsNullOrEmpty(MobilePhoneNumber))
-                return MobilePhoneNumber;
-            return PhoneNumber;
-        }
+        public string GetPhoneNumber() =>
+            !string.IsNullOrEmpty(MobilePhoneNumber)
+                ? MobilePhoneNumber
+                : PhoneNumber;
     }
 
     public enum ContactPreference
