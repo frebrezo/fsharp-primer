@@ -75,6 +75,64 @@ namespace CSharpDotNetCoreExamples
             return fibonnaciSeq;
         }
 
+        public static double Add(double x, double y) =>
+            x + y;
+
+        public static double Subtract(double x, double y) =>
+            x - y;
+
+        public static double Mulitply(double x, double y) =>
+            x * y;
+
+        public static double Divide(double x, double y) =>
+            x / y;
+
+        public static double Calc(Func<double, double, double> op, double x, double y) =>
+            op(x, y);
+
+        public static void Calculator()
+        {
+            var result = 0.0d;
+
+            result = Calc(Add, 1.0d, 2.0d);
+            Console.WriteLine(result);
+
+            result = Calc(Subtract, 1.0d, 2.0d);
+            Console.WriteLine(result);
+
+            result = Calc(Mulitply, 1.0d, 2.0d);
+            Console.WriteLine(result);
+
+            result = Calc(Divide, 1.0d, 2.0d);
+            Console.WriteLine(result);
+        }
+
+        public static bool IsPangram(string s)
+        {
+            const string ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+
+            if (string.IsNullOrEmpty(s)) return false;
+            s = s.ToLower();
+            var isPangram = false;
+            foreach (char alphaChar in ALPHABET)
+            {
+                isPangram = false;
+
+                foreach (char c in s)
+                {
+                    if (c == alphaChar)
+                    {
+                        isPangram = true;
+                        break;
+                    }
+                }
+
+                if (!isPangram) break;
+            }
+
+            return isPangram;
+        }
+
         public static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
@@ -82,6 +140,10 @@ namespace CSharpDotNetCoreExamples
             AddSample();
             var fibonacciSeq = GenerateFibonacciNumbers(10);
             Console.WriteLine($"[{string.Join(',', fibonacciSeq)}]");
+
+            Calculator();
+
+            Console.WriteLine($"Is pangram {IsPangram("The quick brown fox jumps over the lazy dog.")}");
         }
     }
 }

@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpDotNetCoreExamples", "FSharpDotNetCoreExamples\FSharpDotNetCoreExamples.fsproj", "{12D41B7F-5E77-412E-966B-75A34BA63A2C}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "FSharpDotNetCoreExamples", "FSharpDotNetCoreExamples\FSharpDotNetCoreExamples.fsproj", "{12D41B7F-5E77-412E-966B-75A34BA63A2C}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpTypeExamples", "FSharpTypeExamples\FSharpTypeExamples.fsproj", "{E56941A0-2F5F-4F47-AD1A-43B72C69E82F}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpContactAddressExample", "FSharpContactAddressExample\FSharpContactAddressExample.fsproj", "{BA6E1B44-D8C5-4A39-9079-4402D9AD1150}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpContactAddressClassExample", "FSharpContactAddressClassExample\FSharpContactAddressClassExample.fsproj", "{AF53239F-A6DD-4417-8DC9-640EDA6931E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{12D41B7F-5E77-412E-966B-75A34BA63A2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12D41B7F-5E77-412E-966B-75A34BA63A2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12D41B7F-5E77-412E-966B-75A34BA63A2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E56941A0-2F5F-4F47-AD1A-43B72C69E82F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E56941A0-2F5F-4F47-AD1A-43B72C69E82F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E56941A0-2F5F-4F47-AD1A-43B72C69E82F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E56941A0-2F5F-4F47-AD1A-43B72C69E82F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA6E1B44-D8C5-4A39-9079-4402D9AD1150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA6E1B44-D8C5-4A39-9079-4402D9AD1150}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA6E1B44-D8C5-4A39-9079-4402D9AD1150}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA6E1B44-D8C5-4A39-9079-4402D9AD1150}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF53239F-A6DD-4417-8DC9-640EDA6931E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF53239F-A6DD-4417-8DC9-640EDA6931E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF53239F-A6DD-4417-8DC9-640EDA6931E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF53239F-A6DD-4417-8DC9-640EDA6931E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
