@@ -3,7 +3,6 @@
 open System
 open System.Collections.Generic
 
-
 // C-like function declarations. Functions must be declared ABOVE usage.
 // Using explicit typing. F# does not require explicit typing.
 //let addSeries (numbers) =
@@ -14,7 +13,6 @@ let addSeries (numbers : int seq) : int =
     //else numbers |> Seq.reduce (fun x y -> x + y)
     // sum is a special case of reduce.
     //else numbers |> Seq.sum
-
 
 let addImmutableSample() =
     // Array
@@ -44,7 +42,6 @@ let addImmutableSample() =
 
     let result = addSeries(numbers)
     printfn "%i" result
-
 
 let addMutableSample() =
     // FYI, F# doesn't help you add open (using) statements.
