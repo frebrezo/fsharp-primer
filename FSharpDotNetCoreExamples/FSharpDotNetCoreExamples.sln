@@ -11,6 +11,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpContactAddressExample
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpContactAddressClassExample", "FSharpContactAddressClassExample\FSharpContactAddressClassExample.fsproj", "{AF53239F-A6DD-4417-8DC9-640EDA6931E7}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpPatternMatchingExamples", "FSharpPatternMatchingExamples\FSharpPatternMatchingExamples.fsproj", "{E67DCC86-B905-4205-9AB4-32F0A2EF6448}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{AF53239F-A6DD-4417-8DC9-640EDA6931E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF53239F-A6DD-4417-8DC9-640EDA6931E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF53239F-A6DD-4417-8DC9-640EDA6931E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E67DCC86-B905-4205-9AB4-32F0A2EF6448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E67DCC86-B905-4205-9AB4-32F0A2EF6448}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E67DCC86-B905-4205-9AB4-32F0A2EF6448}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E67DCC86-B905-4205-9AB4-32F0A2EF6448}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

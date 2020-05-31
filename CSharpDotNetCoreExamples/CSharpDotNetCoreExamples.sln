@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpDotNetCoreExamples", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpContactAddressExample", "CSharpContactAddressExample\CSharpContactAddressExample.csproj", "{2E05A495-A4DC-465E-ABAC-190509231ACB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpTypeExamples", "CSharpTypeExamples\CSharpTypeExamples.csproj", "{6D70A80C-DB6E-4D05-9ECD-0DAE28D8D12D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpSwitchStatementExamples", "CSharpSwitchStatementExamples\CSharpSwitchStatementExamples.csproj", "{38212F3B-0154-4A47-A589-11D319D6183B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{2E05A495-A4DC-465E-ABAC-190509231ACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E05A495-A4DC-465E-ABAC-190509231ACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E05A495-A4DC-465E-ABAC-190509231ACB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D70A80C-DB6E-4D05-9ECD-0DAE28D8D12D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D70A80C-DB6E-4D05-9ECD-0DAE28D8D12D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D70A80C-DB6E-4D05-9ECD-0DAE28D8D12D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D70A80C-DB6E-4D05-9ECD-0DAE28D8D12D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38212F3B-0154-4A47-A589-11D319D6183B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38212F3B-0154-4A47-A589-11D319D6183B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38212F3B-0154-4A47-A589-11D319D6183B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38212F3B-0154-4A47-A589-11D319D6183B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -81,6 +81,8 @@ type Contact () = class
     member val MobilePhoneNumber : string = null with get, set
     member val FaxNumber : string = null with get, set
     member val EmailAddress : string = null with get, set
+    //[<DefaultValue>] val mutable Address : Address
+    //member val Address : Option<Address> = None with get, set
     member val Address : Address = new Address() with get, set
 
     member this.MailingAddress : string =
